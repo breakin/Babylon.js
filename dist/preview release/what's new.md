@@ -7,12 +7,12 @@
 - Updated skeleton viewer in the Inspector ([Pryme8](https://github.com/Pryme8))
 - Added texture inspection in the Inspector ([DarraghBurkeMS](https://github.com/DarraghBurkeMS))
 - Added PBR support in the node material editor ([Popov72](https://github.com/Popov72))
-- Added new node material editor modes: procedural textures, post processes, particle shaders ([Popov72](https://github.com/Popov72) and [Deltakosh](https://github.com/deltakosh)) 
+- Added new node material editor modes: procedural textures, post processes, particle shaders ([Popov72](https://github.com/Popov72) and [Deltakosh](https://github.com/deltakosh))
 - Added customizable frames in the node material editor ([Pamela W](https://github.com/msDestiny14))
 - Added support for code templates in the playground ([sailro]( https://github.com/sailro))
 - Added HDR texture filtering tools to the sandbox. [Doc](https://medium.com/@babylonjs/real-time-pbr-filtering-is-coming-to-babylon-cb0e81159d79) ([Sebavan](https://github.com/sebavan/))
-- Revamped documentation ([RaananW](https://github.com/RaananW), [John King](https://github.com/BabylonJSGuide), [Patrick Ryan](https://github.com/PatrickRyanMS), [PiratJC](https://github.com/PirateJC)) 
-- Added KTX + BasisU support ([Popov72](https://github.com/Popov72)) 
+- Revamped documentation ([RaananW](https://github.com/RaananW), [John King](https://github.com/BabylonJSGuide), [Patrick Ryan](https://github.com/PatrickRyanMS), [PiratJC](https://github.com/PirateJC))
+- Added KTX + BasisU support ([Popov72](https://github.com/Popov72))
 - Updated WebXR Support ([RaananW](https://github.com/RaananW))
 - Added support for thin instances for faster mesh instances. [Doc](https://doc.babylonjs.com/how_to/how_to_use_thininstances) ([Popov72](https://github.com/Popov72))
 - Added support in `ShadowGenerator` for soft transparent shadows ([Popov72](https://github.com/Popov72))
@@ -150,6 +150,9 @@
 - Added `scene.physicsEnabled` boolean ([Deltakosh](https://github.com/deltakosh))
 - Fixed an issue with transformation set after physics body was created using Cannon.js (excluding height and plane) ([#7928](https://github.com/BabylonJS/Babylon.js/issues/7928)) ([RaananW](https://github.com/RaananW))
 - Fixed an issue with compound creation and scaling preset ([#8888](https://github.com/BabylonJS/Babylon.js/issues/8888)) ([RaananW](https://github.com/RaananW))
+
+### Engine
+- Moved all instance data from Geometry to Mesh such that the same Geometry objects can be used by many meshes with instancing. Reduces memory consumption on CPU/GPU. ([breakin](https://github.com/breakin)
 
 ### Loaders
 
@@ -400,3 +403,4 @@
 - `SoundTrack.RemoveSound` and `SoundTrack.AddSound` were renamed to `SoundTrack.removeSound` and `SoundTrack.addSound` ([Deltakosh](https://github.com/deltakosh))
 - `PolygonPoints.add` no longer filters out points that are close to the first point ([bghgary](https://github.com/bghgary))
 - `Material` created with matching names now have auto-incrementing IDs ([Drigax](https://github.com/drigax))
+- Mesh.createInstance no longer make a unique Geometry for the Mesh so updating one Geometry can affect more meshes than before. Use Mesh.makeUniqueGeometry for old behaviour. ([breakin](https://github.com/breakin))
